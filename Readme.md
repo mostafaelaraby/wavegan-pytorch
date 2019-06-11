@@ -59,7 +59,7 @@ WaveGAN can now be trained on datasets of arbitrary audio files (previously requ
 
 ### Quality considerations
 
-If your results are too noisy, try adding a post-processing filter with `--wavegan_genr_pp`. You may also want to change the amount of or remove phase shuffle using `--wavegan_disc_phaseshuffle 0`. Increasing either the model size (`--wavegan_dim`) or filter length (`--wavegan_kernel_len`) may improve results but will increase training time.
+If your results are too noisy, try adding a post-processing filter . You may also want to change the amount of or remove phase shuffle from models.py . Increasing either the model size  or filter length from models.py may improve results but will increase training time.
 
 ### Monitoring
 
