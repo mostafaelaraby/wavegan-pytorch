@@ -52,7 +52,6 @@ WaveGAN can now be trained on datasets of arbitrary audio files (previously requ
 
 ### Samples
 - Model trained on piano dataset to generate 4 seconds using model capacity 32 for faster training
-<img src="static/train_loss.png"/>
 - Latent space interpolation to check the model give the following image
 <img src="static/latent_space_interpolation.png" height=500/>
 - A sample audio can be found at sample (from an early iteration with 4 sec window)
