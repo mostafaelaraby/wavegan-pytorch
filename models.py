@@ -42,7 +42,7 @@ class Conv1D(nn.Module):
         self.phase_shuffle =  PhaseShuffle(shift_factor)
         self.alpha = alpha
         self.use_batch_norm = use_batch_norm
-        self.use_phase_shuffle = shift_factor==0
+        self.use_phase_shuffle = shift_factor!=0
         self.use_drop = drop_prob>0
         self.dropout = nn.Dropout2d(drop_prob)
     
