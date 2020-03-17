@@ -14,12 +14,12 @@ target_signals_dir = '../../DataSet/mancini_piano/piano'
 model_prefix = 'exp1' # name of the model to be saved
 n_iterations = 10000
 lr_g = 1e-4
-lr_d = 3e-4
+lr_d = 3e-4 # using ttur https://arxiv.org/abs/1706.08500
 beta1 = 0.5
 beta2 = 0.999
 decay_lr = False # used to linearly deay learning rate untill reaching 0 at iteration 100,000
 generator_batch_size_factor = 1 # in some cases we might try to update the generator with double batch size used in the discriminator https://arxiv.org/abs/1706.08500
-n_critic = 5 # update generator every n_critic steps 
+n_critic = 1 # update generator every n_critic steps 
 # gradient penalty regularization factor.
 p_coeff = 10
 batch_size = 10
