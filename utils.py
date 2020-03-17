@@ -216,7 +216,7 @@ if __name__ == '__main__':
     import time
     start = time.time()
     print(time.time() - start)
-    train_loader = WavDataLoader(os.path.join('/home/marb/My_Directory/Masters/Semester 1/Research/Music Research Project/DataSet/mancini_piano/piano','train'),'wav')
+    train_loader = WavDataLoader(os.path.join('piano','train'),'wav')
     start = time.time()
     for i in range(7):
         x = next(train_loader)
