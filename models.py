@@ -52,9 +52,11 @@ class Conv1D(nn.Module):
             x = self.batch_norm(x)
         x = F.leaky_relu(x, negative_slope=self.alpha)
         if self.use_phase_shuffle: 
-            print(x.shape)
+            if self.verbose:
+                print(x.shape)
             x = self.phase_shuffle(x)
-            print(x.shape)
+            if self.verbose:
+                print(x.shape)
         if self.use_drop:
             x = self.dropout(x)
         return x
