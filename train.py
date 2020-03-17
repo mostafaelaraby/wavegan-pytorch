@@ -158,6 +158,7 @@ class WaveGan_GP(object):
 
                 progress_updates = {'Loss_D WD': str(self.train_w_distance[-1]),'Loss_G':str(self.g_cost[-1]), 'Val_G':str(self.valid_g_cost[-1])}
                 progress_bar.set_postfix(progress_updates)
+                latent_space_interpolation(self.generator, n_samples=2)
             
             if iter_indx%progress_bar_step_iter_size==0:
                 progress_bar.update()

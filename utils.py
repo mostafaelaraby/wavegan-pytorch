@@ -53,7 +53,7 @@ def visualize_audio(audio_tensor, is_monphonic=False):
             plt.title('Linear-frequency power spectrogram %i' % (i+1))
     if not(os.path.isdir('visualization')):
         os.makedirs('visualization')
-    plt.savefig('visualization/loss.png')
+    plt.savefig('visualization/interpolation.png')
     plt.show()
 
 def visualize_loss(loss_1, loss_2, first_legend, second_legend, y_label):
