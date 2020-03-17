@@ -51,6 +51,9 @@ def visualize_audio(audio_tensor, is_monphonic=False):
             librosa.display.specshow(D, y_axis='linear')
             plt.colorbar(format='%+2.0f dB')
             plt.title('Linear-frequency power spectrogram %i' % (i+1))
+    if not(os.path.isdir('visualization')):
+        os.makedirs('visualization')
+    plt.savefig('visualization/loss.png')
     plt.show()
 
 def visualize_loss(loss_1, loss_2, first_legend, second_legend, y_label):
@@ -63,6 +66,10 @@ def visualize_loss(loss_1, loss_2, first_legend, second_legend, y_label):
     plt.grid(True)
     plt.tight_layout()
     plt.legend()
+    plt.show()
+    if not(os.path.isdir('visualization')):
+        os.makedirs('visualization')
+    plt.savefig('visualization/loss.png')
     plt.show()
 
 def latent_space_interpolation(model, n_samples=10 ):
