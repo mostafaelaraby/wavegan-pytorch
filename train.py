@@ -19,7 +19,7 @@ class WaveGan_GP(object):
         self.valid_reconstruction = []
 
         self.discriminator =  WaveGANDiscriminator(slice_len = window_length, model_size = model_capacity_size, use_batch_norm=use_batchnorm, num_channels=num_channels).to(device)  
-        
+        self.discriminator.apply(weights_init)
         self.generator = WaveGANGenerator(slice_len = window_length,  model_size= model_capacity_size, use_batch_norm=use_batchnorm, num_channels=num_channels).to(device) 
  
         self.optimizer_g = optim.Adam(self.generator.parameters(), lr=lr_g, betas=(beta1,  beta2)) # Setup Adam optimizers for both G and D
@@ -108,11 +108,9 @@ class WaveGan_GP(object):
             save_samples(fake, first_iter )
             
         for iter_indx in range(first_iter, n_iterations): 
-            self.generator.train()
             self.enable_disc_disable_gen()
             for _ in range(n_critic):
-                data = next(self.train_loader)
-                real_signal = data
+                real_signal = next(self.train_loader)
 
                 # need to add mixed signal and flag
                 noise = sample_noise(batch_size*generator_batch_size_factor).to(device).to(device)
