@@ -56,7 +56,6 @@ def visualize_audio(audio_tensor, is_monphonic=False):
     if not (os.path.isdir("visualization")):
         os.makedirs("visualization")
     plt.savefig("visualization/interpolation.png")
-    plt.show()
 
 
 def visualize_loss(loss_1, loss_2, first_legend, second_legend, y_label):
@@ -73,7 +72,6 @@ def visualize_loss(loss_1, loss_2, first_legend, second_legend, y_label):
     if not (os.path.isdir("visualization")):
         os.makedirs("visualization")
     plt.savefig("visualization/loss.png")
-    plt.show()
 
 
 def latent_space_interpolation(model, n_samples=10):
@@ -237,8 +235,8 @@ class WavDataLoader:
 
 
 if __name__ == "__main__":
-    import time
-
+    # For debugging purposes
+    import time 
     start = time.time()
     print(time.time() - start)
     train_loader = WavDataLoader(os.path.join("piano", "train"), "wav")
