@@ -13,8 +13,6 @@ class WaveGan_GP(object):
         self.g_cost = []
         self.train_d_cost = []
         self.train_w_distance = []
-        self.valid_d_cost = []
-        self.valid_w_distance = []
         self.valid_g_cost = [-1]
         self.valid_reconstruction = []
 
@@ -120,8 +118,6 @@ class WaveGan_GP(object):
             self.optimizer_g.load_state_dict(checkpoint["optimizer_g"])
             self.train_d_cost = checkpoint["train_d_cost"]
             self.train_w_distance = checkpoint["train_w_distance"]
-            self.valid_d_cost = checkpoint["valid_d_cost"]
-            self.valid_w_distance = checkpoint["valid_w_distance"]
             self.valid_g_cost = checkpoint["valid_g_cost"]
             self.g_cost = checkpoint["g_cost"]
 
@@ -158,11 +154,6 @@ class WaveGan_GP(object):
                 val_data = next(self.val_loader)
                 val_real = val_data
                 with torch.no_grad():
-                    val_disc_loss, val_disc_wd = self.calculate_discriminator_loss(
-                        val_real.data, generated.data
-                    )
-                    self.valid_d_cost.append(val_disc_loss.item())
-                    self.valid_w_distance.append(val_disc_wd.item() * -1)
                     val_discriminator_output = self.discriminator(val_real)
                     val_generator_cost = val_discriminator_output.mean()
                     self.valid_g_cost.append(val_generator_cost.item())
@@ -216,8 +207,6 @@ class WaveGan_GP(object):
                     "optimizer_g": self.optimizer_g.state_dict(),
                     "train_d_cost": self.train_d_cost,
                     "train_w_distance": self.train_w_distance,
-                    "valid_d_cost": self.valid_d_cost,
-                    "valid_w_distance": self.valid_w_distance,
                     "valid_g_cost": self.valid_g_cost,
                     "g_cost": self.g_cost,
                 }
